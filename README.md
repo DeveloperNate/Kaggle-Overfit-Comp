@@ -13,7 +13,7 @@ The basic structure of this report will consist of :
     <li>Experimenting with the model - Feature selection</li>
   </ul>
 
-<h2>Exploratory Data Analysis</h2>
+<h2>Step 1 - Exploratory Data Analysis</h2>
 
 From an initial look, we can see the following information :
 <ul>
@@ -56,4 +56,63 @@ Again, there are differences in the std KDE between the train and test dataset w
 
 When the data that had a 50-50% split was compared to the test dataset, it showed a difference between the two dataset.
 This shows the biggest problem that we face. If we reduce the variance in our training dataset then the model will overfit, as the training and test data has a big enough differences to predict high acc and roc scores on the training data but not on the test dataset.
+
+<h2>Step 2- Creating the Cross validation Scoring Function</h2>
+
+This can be seen in the python code in the "Overfitting.ipynb" file
+
+<h2> Step 3- Optimising the Classifiers </h2> 
+
+Due to the nature of the compeition, a binary classification competition, a Logestic Model was used to start the alogorithm exploration. A GridSearch was then performed on the Logistic Regression model to optimise the classifier.
+<img src="Linear.JPG">
+
+The best parameters from the GridSearch were then used to make the first submission.
+
+<h2> Feature Selection </h2>
+
+There are a number of feature selection methods that could be used to select the features for our classifier. The Feature Selection methods that I used was : Recursive Feature Elimination.
+
+This process obtains the importance of each feature and recursively drops the feature with the least coefficient or importance until it finds the selection with the best number of features.
+
+PCA was not used as the correlation between variables was not deemed as strong or even moderate. This lacking of strength between correlations can be seen in the heatmap graph below.
+
+<img src="heapmap.JPG">
+
+
+
+As we can see that the ROC score ranges from 0.703 to 0.808. However, we need to consider the problem of overfitting to the training model. Based on the fact that :
+<ul>
+    <li>The coefficient has a mean of -0.02 and std of 0.22 </li>
+    <li>The differences between the train and test dataset will make overfitting likely </li>
+</ul>
+A decicision was made to make the model simpler so that we try and reduce the bias and hopefully stop overfitting to our train dataset. These means we must reduce the number of features and then further tune the model so that we can make sure that we get the best bias-variance trade off that we can.
+
+25 Variables were selected for the model. The variables the were selected can be seen below
+
+<img src="feature_selection.JPG">
+
+An examination of the test and train once again occured to see the difference between the two dataset.
+<img src="reduce_feature.JPG">
+
+
+With the reduced features we can see that the width of the distributions are similar, which can help us tune our model and so increase our ROC score on both the training and testing dataset. The first method was to add new features to the data. A quick evaluation on the postive and negative targets took place.
+
+<img src="all_data.JPG">
+
+As you can see that each of new the values show differences between the target values. Therefore, I will recursively eliminate the features see how they improve the ROC score.
+
+<img src="all_features.JPG">
+
+This resulted in huge overfitting. From the initial graphs ,we can see that the std ditribution is more of a Gemma shape than a Gaussian one. This means that I will delete both the std and variance feature.This showed a slight improvement however overfitting was still occuring. The next step was to try and combine a few models to reduce this overfitting.
+
+<h2> Making an Emsemble</h2>
+
+The two approaches that were used was the BaggingClassifier and the VotingClassifier with the Votingclassifer offering better results on the test dataset.
+
+<img src="emsemble.JPG">
+Again, overfitting is occurring on the test data. The next step will be to do further research on how to avoid overfitting. I will investigate similar competitions and look at the process that the winners took to avoid overfitting with a high dimensional / low sample dataset.
+
+
+
+
 
