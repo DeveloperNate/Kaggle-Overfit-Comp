@@ -41,3 +41,19 @@ After looking at the mean and std, a graph was made to examine the coefficient a
 
 The report will now examine the train dataset vs the test dataset in greater depth.
 
+<img src="min_value.JPG">
+
+The min KDE for the train dataset is slighly skewed right when compared to the test dataset.
+
+<img src="Distribution_mean.JPG">
+The mean's KDE for train and test dataset is slightly different with the test dataset having a taller distribution.
+<img src="Distribution_std.JPG">
+
+Again, there are differences in the std KDE between the train and test dataset with the train test being skewed to the right. One factor that could explain this difference is the bias in the dataset. As there are many more positive targets than negatives ones, this could explain the differences in the train/ test dataset if the test dataset had a 50-50% split.
+
+<img src="Distribution_equal.JPG">
+
+
+When the data that had a 50-50% split was compared to the test dataset, it showed a difference between the two dataset.
+This shows the biggest problem that we face. If we reduce the variance in our training dataset then the model will overfit, as the training and test data has a big enough differences to predict high acc and roc scores on the training data but not on the test dataset.
+
