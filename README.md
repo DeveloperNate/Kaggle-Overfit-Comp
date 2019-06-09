@@ -1,4 +1,3 @@
-# Kaggle-Overfit-Comp
 <h1>Kaggle Competition to avoid overfitting</h2>
 
 This report is the process that was untaken to create the model that was entered into the Kaggle competition,"Don't Overfit".The premise of the competition is stated below :
@@ -23,4 +22,22 @@ From an initial look, we can see the following information :
     <li>There is an imbalance in the classification of 16/25</li>
     <li>There is no missing Data</li>
  </ul>
+
+The information below shows example records of the dataframe, a brief description of the dataframe , the balance of the binary classifications and any missing data.
+
+<img src="Data_First_Look.JPG">
+
+The graph below shows the Std and mean of the dataframe.
+
+<img src="mean_std_Data_first.JPG">
+
+You can see that there has been some distortion to the train data, so even though it has the same mean and std as the train dataset, the scale is not the same. To fix this issue,the sklearn standard scaler was used to put both datasets on the same scale. As the data has a normal distributed within each feature, the scale will distribute the data around 0, with a standard deviation of 1.
+
+To do this, the mean and standard deviation are calculated for the feature and then the feature is scaled based on: x(i)–mean(x) / stdev(x)
+
+After looking at the mean and std, a graph was made to examine the coefficient and correlation for each feature.
+
+<img src="Coefficient.JPG"> 
+
+The report will now examine the train dataset vs the test dataset in greater depth.
 
