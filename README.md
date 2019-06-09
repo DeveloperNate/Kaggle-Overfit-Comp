@@ -1,6 +1,6 @@
 <h1>Kaggle Competition to avoid overfitting</h2>
 
-This report is the process that was untaken to create the model that was entered into the Kaggle competition,"Don't Overfit".The premise of the competition is stated below :
+This report is the process that was untaken to create the model that was entered into the Kaggle competition,"Don't Overfit". All code can be found in the file "Overfitting.ipynb".The premise of the competition is stated below :
 
     "we have 20,000 rows of continuous variables, and a mere handful of training samples. Once again, we challenge you not to overfit. Do your best, model without overfitting, and add, perhaps, to your own legend."
 
